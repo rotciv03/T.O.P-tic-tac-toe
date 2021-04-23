@@ -1,0 +1,126 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+:root {
+  --cell-size: 200px;
+  --mark-size: calc(var(--cell-size) * 0.9);
+}
+.root1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 610px;
+  height: 600px;
+}
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 2px solid red;
+  position: relative;
+}
+
+.square-1,
+.square-2,
+.square-3 {
+  border-top: none;
+}
+.square-3,
+.square-6,
+.square-9 {
+  border-right: none;
+}
+.square-7,
+.square-8,
+.square-9 {
+  border-bottom: none;
+}
+.square-1,
+.square-4,
+.square-7 {
+  border-left: none;
+}
+
+.square.x::before,
+.square.x::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--mark-size) * 0.15);
+  height: var(--mark-size);
+  background-color: black;
+}
+
+.square.x::before {
+  transform: rotate(45deg);
+}
+.square.x::after {
+  transform: rotate(-45deg);
+}
+
+.square.circle::before,
+.square.circle::after {
+  content: "";
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.square.circle::before {
+  width: var(--mark-size);
+  height: var(--mark-size);
+  background: black;
+}
+.square.circle::after {
+  width: calc(var(--mark-size) * 0.7);
+  height: calc(var(--mark-size) * 0.7);
+  background: white;
+}
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.winning-message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.winning-message button:hover {
+  font-size: 3rem;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.winning-message.show {
+  display: flex;
+}
